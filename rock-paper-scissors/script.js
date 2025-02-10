@@ -67,5 +67,4 @@ const playRPS = function () {
     Paper: ${stats.count.paper}
     Scissors: ${stats.count.scissors}`);
 };
-
 playRPS();
