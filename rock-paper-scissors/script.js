@@ -1,5 +1,4 @@
 const playRPS = function () {
-
   const stats = {
     wins: 0,
     ties: 0,
@@ -12,13 +11,10 @@ const playRPS = function () {
   };
 
   const options = [`R`, `P`, `S`];
-
   let keepPlaying = true;
-
   while (keepPlaying) {
 
     let userChoice = window.prompt(`Enter R, P, or S:`);
-
     if (!userChoice) {
       return;
     }
@@ -37,19 +33,19 @@ const playRPS = function () {
         stats.count.scissors++;
       }
 
-      const index = Math.floor(Math.random() * options.length);
-      const computerChoice = options[index];
+      const cpuMagic = Math.floor(Math.random() * options.length);
+      const cpuChoice = options[cpuMagic];
 
-      window.alert(`The computer chose ${computerChoice}`);
+      window.alert(`The computer chose ${cpuChoice}`);
 
-      if (userChoice === computerChoice) {
+      if (userChoice === cpuChoice) {
         stats.ties++;
         window.alert("It's a tie!");
 
       } else if (
-        (userChoice === `R` && computerChoice === `S`) ||
-        (userChoice === `P` && computerChoice === `R`) ||
-        (userChoice === `S` && computerChoice === `P`)
+        (userChoice === `R` && cpuChoice === `S`) ||
+        (userChoice === `P` && cpuChoice === `R`) ||
+        (userChoice === `S` && cpuChoice === `P`)
       ) {
         stats.wins++;
         window.alert(`You win!`);
@@ -62,6 +58,14 @@ const playRPS = function () {
       keepPlaying = window.confirm(`Play again?`);
     }
   }
+  window.alert(`Stats:
+    Wins: ${stats.wins}
+    Loses: ${stats.losses}
+    Ties: ${stats.ties}
+  Your Choices:
+    Rock: ${stats.count.rock}
+    Paper: ${stats.count.paper}
+    Scissors: ${stats.count.scissors}`);
 };
 
 playRPS();
